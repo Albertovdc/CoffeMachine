@@ -34,7 +34,13 @@ machine_on = True
 while machine_on:
     coffe = input("What would you like? (espresso/latte/cappuccino): ").lower()
     if coffe == 'espresso':
-        pass
+        # pass
+        # print(MENU["espresso"]["ingredients"]["water"])
+        # resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
+        if MENU["espresso"]["ingredients"]["water"] < resources["water"]:
+            pass
+        else:
+            print(f"Sorry theres is enough {resources}")
     elif coffe == 'latte':
         pass
     elif coffe == 'cappuccino':
@@ -43,6 +49,7 @@ while machine_on:
         for name in resources:
             print(f"{name}: {resources[f'{name}']}")
     elif coffe == 'off':
+        print("See you.")
         machine_on = False
     else:
         print("You don't choice a valid option.")
