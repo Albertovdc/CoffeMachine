@@ -53,12 +53,12 @@ def buy_drink(drink):
         print(f"Your coins: {coins_user}")
     else:
         resources["Money"] += MENU[f"{drink}"]["cost"]
-        print(f"{coins_user} - {MENU[f'{drink}']['cost']}")
+        # print(f"{coins_user} - {MENU[f'{drink}']['cost']}")
         coins_user = round(coins_user - MENU[f"{drink}"]["cost"], 2)
         print("You coffe ☕")
         print(f"You change {coins_user}")
         coins_user = 0
-        print(f"The coins user is {coins_user}")
+        # print(f"The coins user is {coins_user}")
 
 
 def i_coffe(drink):
