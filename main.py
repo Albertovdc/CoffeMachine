@@ -30,6 +30,10 @@ resources = {
     "coffee": 100,
 }
 
+water_machine = resources["water"]
+coffee_machine = resources["coffee"]
+
+
 machine_on = True
 while machine_on:
     coffe = input("What would you like? (espresso/latte/cappuccino): ").lower()
@@ -38,13 +42,39 @@ while machine_on:
         # print(MENU["espresso"]["ingredients"]["water"])
         # resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
         if MENU["espresso"]["ingredients"]["water"] < resources["water"]:
-            pass
+            if MENU["espresso"]["ingredients"]["coffee"] < resources["coffee"]:
+                resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
+                resources["coffee"] = resources["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
+            else:
+                print("Sorry there is enough coffee")
         else:
-            print(f"Sorry theres is enough {resources}")
+            print("Sorry theres is enough water")
     elif coffe == 'latte':
-        pass
+        if MENU["latte"]["ingredients"]["water"] < resources["water"]:
+            if MENU["latte"]["ingredients"]["milk"] < resources["milk"]:
+                if MENU["latte"]["ingredients"]["coffee"] < resources["coffee"]:
+                    resources["water"] = resources["water"] - MENU["latte"]["ingredients"]["water"]
+                    resources["milk"] = resources["milk"] - MENU["latte"]["ingredients"]["milk"]
+                    resources["coffee"] = resources["coffee"] - MENU["latte"]["ingredients"]["coffee"]
+                else:
+                    print("There's no enough coffee")
+            else:
+                print("There's no enough milk")
+        else:
+            print("There's no enough water")
     elif coffe == 'cappuccino':
-        pass
+        if MENU["cappuccino"]["ingredients"]["water"] < resources["water"]:
+            if MENU["cappuccino"]["ingredients"]["milk"] < resources["milk"]:
+                if MENU["cappuccino"]["ingredients"]["coffee"] < resources["coffee"]:
+                    resources["water"] = resources["water"] - MENU["cappuccino"]["ingredients"]["water"]
+                    resources["milk"] = resources["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
+                    resources["coffee"] = resources["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
+                else:
+                    print("There's no enough coffee")
+            else:
+                print("There's no enough milk")
+        else:
+            print("There's no enough water")
     elif coffe == 'report':
         for name in resources:
             print(f"{name}: {resources[f'{name}']}")
