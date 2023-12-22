@@ -30,9 +30,8 @@ resources = {
     "coffee": 100,
 }
 
-water_machine = resources["water"]
-coffee_machine = resources["coffee"]
 
+resources["Money"] = 0
 
 machine_on = True
 while machine_on:
@@ -55,12 +54,13 @@ while machine_on:
                 pennies = int(input("How many pennies?: "))
                 pennies *= 0.01
                 coins = quarters + dimes + nickels + pennies
-                if coins < MENU["latte"]["cost"]:
+                if coins < MENU["espresso"]["cost"]:
                     print("Sorry there is enough")
                     print(f"Final coins {coins}")
                 else:
-                    resources["Money"] += MENU["latte"]["cost"]
-                    coins = coins - MENU["latte"]["cost"]
+                    resources["Money"] += MENU["espresso"]["cost"]
+                    print(f"{coins} - {MENU['espresso']['cost']}")
+                    coins = round(coins - MENU["espresso"]["cost"], 1)
                     print("You coffe ☕")
                     print(f"You change {coins}")
             else:
@@ -88,7 +88,8 @@ while machine_on:
                         print(f"Final coins {coins}")
                     else:
                         resources["Money"] += MENU["latte"]["cost"]
-                        coins = coins - MENU["latte"]["cost"]
+                        print(f"{coins} - {MENU['latte']['cost']}")
+                        coins = round(coins - MENU["latte"]["cost"], 1)
                         print("You coffe ☕")
                         print(f"You change {coins}")
 
@@ -114,12 +115,13 @@ while machine_on:
                     pennies = int(input("How many pennies?: "))
                     pennies *= 0.01
                     coins = quarters + dimes + nickels + pennies
-                    if coins < MENU["latte"]["cost"]:
+                    if coins < MENU["cappuccino"]["cost"]:
                         print("Sorry there is enough")
                         print(f"Final coins {coins}")
                     else:
-                        resources["Money"] += MENU["latte"]["cost"]
-                        coins = coins - MENU["latte"]["cost"]
+                        resources["Money"] += MENU["cappuccino"]["cost"]
+                        print(f"{coins} - {MENU['cappuccino']['cost']}")
+                        coins = round(coins - MENU["cappuccino"]["cost"], 1)
                         print("You coffe ☕")
                         print(f"You change {coins}")
                 else:
