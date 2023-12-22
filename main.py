@@ -36,6 +36,7 @@ coffee_machine = resources["coffee"]
 
 machine_on = True
 while machine_on:
+    coins = 0
     coffe = input("What would you like? (espresso/latte/cappuccino): ").lower()
     if coffe == 'espresso':
         # pass
@@ -45,6 +46,23 @@ while machine_on:
             if MENU["espresso"]["ingredients"]["coffee"] < resources["coffee"]:
                 resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
                 resources["coffee"] = resources["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
+                quarters = int(input("How many quarters?: "))
+                quarters *= 0.25
+                dimes = int(input("How many dimes?: "))
+                dimes *= 0.1
+                nickels = int(input("How many nickles?: "))
+                nickels *= 0.05
+                pennies = int(input("How many pennies?: "))
+                pennies *= 0.01
+                coins = quarters + dimes + nickels + pennies
+                if coins < MENU["latte"]["cost"]:
+                    print("Sorry there is enough")
+                    print(f"Final coins {coins}")
+                else:
+                    resources["Money"] += MENU["latte"]["cost"]
+                    coins = coins - MENU["latte"]["cost"]
+                    print("You coffe ☕")
+                    print(f"You change {coins}")
             else:
                 print("Sorry there is enough coffee")
         else:
@@ -56,6 +74,24 @@ while machine_on:
                     resources["water"] = resources["water"] - MENU["latte"]["ingredients"]["water"]
                     resources["milk"] = resources["milk"] - MENU["latte"]["ingredients"]["milk"]
                     resources["coffee"] = resources["coffee"] - MENU["latte"]["ingredients"]["coffee"]
+                    quarters = int(input("How many quarters?: "))
+                    quarters *= 0.25
+                    dimes = int(input("How many dimes?: "))
+                    dimes *= 0.1
+                    nickels = int(input("How many nickles?: "))
+                    nickels *= 0.05
+                    pennies = int(input("How many pennies?: "))
+                    pennies *= 0.01
+                    coins = quarters + dimes + nickels + pennies
+                    if coins < MENU["latte"]["cost"]:
+                        print("Sorry there is enough")
+                        print(f"Final coins {coins}")
+                    else:
+                        resources["Money"] += MENU["latte"]["cost"]
+                        coins = coins - MENU["latte"]["cost"]
+                        print("You coffe ☕")
+                        print(f"You change {coins}")
+
                 else:
                     print("There's no enough coffee")
             else:
@@ -69,6 +105,23 @@ while machine_on:
                     resources["water"] = resources["water"] - MENU["cappuccino"]["ingredients"]["water"]
                     resources["milk"] = resources["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
                     resources["coffee"] = resources["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
+                    quarters = int(input("How many quarters?: "))
+                    quarters *= 0.25
+                    dimes = int(input("How many dimes?: "))
+                    dimes *= 0.1
+                    nickels = int(input("How many nickles?: "))
+                    nickels *= 0.05
+                    pennies = int(input("How many pennies?: "))
+                    pennies *= 0.01
+                    coins = quarters + dimes + nickels + pennies
+                    if coins < MENU["latte"]["cost"]:
+                        print("Sorry there is enough")
+                        print(f"Final coins {coins}")
+                    else:
+                        resources["Money"] += MENU["latte"]["cost"]
+                        coins = coins - MENU["latte"]["cost"]
+                        print("You coffe ☕")
+                        print(f"You change {coins}")
                 else:
                     print("There's no enough coffee")
             else:
